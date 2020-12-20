@@ -1,17 +1,12 @@
 package AccesoDatos.DAO.utils;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.List;
 
-import AccesoDatos.DAO.dao.ClienteDao;
 import AccesoDatos.DAO.model.Cliente;
 
 
 public class OperacionesCliente {
-	private Connection connection;
-
+	
 //CONSTRUCTOR
 	public OperacionesCliente(Connection connection) {
 	}

@@ -1,15 +1,23 @@
 package AccesoDatos.DAO.utils;
 
 import AccesoDatos.DAO.model.Producto;
+
+import java.sql.Connection;
+import java.util.List;
+
+import AccesoDatos.DAO.dao.ProductoDao;
 import AccesoDatos.DAO.exceptions.*;
 
 public class OperacionesProducto {
-
-	public OperacionesProducto() {
+	
+	public OperacionesProducto(Connection connection) {
 	}	
 	
 //METODOS
-	public static Producto crearProducto() throws Exception{		
+	public static Producto crearProducto(Connection connect) throws Exception{	
+//			ProductoDao pDao = new ProductoDao();
+//			List<Producto> productosSaved = pDao.getAll(connect);
+			
 			System.out.println("Datos dobre el producto nuevo:");
 			System.out.println("Escriba el codigo del producto.");
 			String codigo_producto = Leer.pedirCadena();
@@ -34,8 +42,12 @@ public class OperacionesProducto {
 					&& proveedor.isEmpty() && descripcion.isEmpty()) {
 				throw new EmptyException();
 			}else {
-				return new Producto(codigo_producto, nombre, gama, dimensiones, proveedor,
-	    			descripcion, cantidad_en_stock, precio_venta, precio_proveedor);
+				if(precio_venta == 0 || precio_proveedor == 0) {
+					throw new ZeroPriceException();
+				}else {
+					return new Producto(codigo_producto, nombre, gama, dimensiones, proveedor,
+		    			descripcion, cantidad_en_stock, precio_venta, precio_proveedor);
+				}
 			}
 		}
 	
@@ -46,5 +58,4 @@ public class OperacionesProducto {
 				descripcion, cantidad_en_stock, precio_venta, precio_proveedor);
 	}
 	
-
 }

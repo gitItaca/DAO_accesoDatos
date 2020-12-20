@@ -52,6 +52,7 @@ public class Programa {
 						System.out.print(cli.getCodigo_empleado_rep_ventas() + " - ");
 						System.out.print(cli.getLimite_credito() + "\n");
 					}
+					System.out.println();
 					break;
 				case 4: 
 					System.out.println("Escriba el nombre a buscar.");
@@ -59,7 +60,7 @@ public class Programa {
 					cDao.getByName(busqueda, connect);
 					break;
 				case 5:
-					Producto productoReemplazar = OperacionesProducto.crearProducto();
+					Producto productoReemplazar = OperacionesProducto.crearProducto(connect);
 					if(productoReemplazar != null) {
 						pDao.update(productoReemplazar, connect);
 					}
@@ -77,8 +78,10 @@ public class Programa {
 						System.out.print(pro.getPrecio_venta() + " - ");						
 						System.out.print(pro.getPrecio_proveedor() + "\n");
 					}
+					System.out.println();
 					break;
 				case 0: System.out.println("Has salido.");
+					Conexion.cerrarConexionBD(connect);
 					break;
 				}
 			} catch (SQLException e) {
@@ -103,4 +106,7 @@ public class Programa {
 		
 		return opcion;
 	}
+	
+	
+	
 }
