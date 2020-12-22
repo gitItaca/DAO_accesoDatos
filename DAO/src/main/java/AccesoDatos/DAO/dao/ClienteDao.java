@@ -39,7 +39,7 @@ public class ClienteDao implements Dao<Cliente>{
 	    		System.out.print(resultSet.getString("pais") + " - ");
 	    		System.out.print(resultSet.getString("codigo_postal") + " - ");
 	    		System.out.print(resultSet.getInt("codigo_empleado_rep_ventas") + " - ");
-	    		System.out.print(resultSet.getDouble("limite_credito" + "\n"));   
+	    		System.out.print(resultSet.getDouble("limite_credito")+ "\n");   
 			}
 	    	resultSet.close();
 	    	stmt.close();
